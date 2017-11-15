@@ -22,6 +22,22 @@
   <% end %>
 </table>
 
+<h1>Assignments</h1>
+<% if current_user.role == "Teacher" %>
+  <%= link_to 'New Assignment', new_group_assignment_path(@group) %>
+<% end %>
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+  <% @assignments.each do |assignment| %>
+    <tr>
+      <td><%= assignment.name %></td>
+    </tr>
+  <% end %>
+</table>
+
 <% if current_user.role == "Teacher" %>
   <%= link_to 'Edit', edit_group_path(@group) %> |
 <% end %>
