@@ -1,3 +1,18 @@
 <%=link_to 'Log Out', destroy_user_session_path, :method=>'delete' %>
 <h1>Your Groups</h1>
 <%= link_to 'New Group', new_group_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Schedule</th>
+  </tr>
+
+  <% @groups.each do |group| %>
+    <tr>
+      <td><%= group.name %></td>
+      <td><%= group.schedule %></td>
+      <td><%= link_to 'Show', group_path(group) %></td>
+      <td><%= link_to 'Edit', edit_group_path(group) %></td>
+    </tr>
+  <% end %>
+</table>
