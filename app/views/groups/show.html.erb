@@ -10,6 +10,18 @@
 
 <h1>Students</h1>
 
+<table>
+  <tr>
+    <th>Email</th>
+  </tr>
+
+  <% User.all.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+</table>
+
 <% if current_user.role == "Teacher" %>
   <%= link_to 'Edit', edit_group_path(@group) %> |
 <% end %>
