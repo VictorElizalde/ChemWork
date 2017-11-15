@@ -7,4 +7,9 @@
 
 <h1>Reports</h1>
 
+<br>
+
+<% if current_user.role == "Teacher" %>
+  <%= link_to 'Edit Assignment', edit_group_assignment_path(@group, @assignment) %> |
+<% end %>
 <%= link_to 'Back', group_path(@group) %>

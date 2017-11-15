@@ -38,6 +38,15 @@ class AssignmentsController < ApplicationController
 	  end
 	end
 
+	def destroy
+		@group = Group.find(params[:group_id])
+		@assignment = @group.assignments.find(params[:id])
+		@assignment.active = false
+		@assignment.save
+
+    redirect_to group_path(@group)
+	end
+
 	private
   def assignment_params
     params.require(:assignment).permit(:name, :group_id)

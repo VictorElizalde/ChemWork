@@ -36,10 +36,15 @@
 
   <% @assignments.each do |assignment| %>
     <tr>
-      <td><%= assignment.name %></td>
-      <td><%= link_to 'Show', group_assignment_path(@group, assignment) %></td>
-      <% if current_user.role == "Teacher" %>
-        <td><%= link_to 'Edit', edit_group_assignment_path(@group, assignment) %></td>
+      <% if assignment.active == true %>
+        <td><%= assignment.name %></td>
+        <td><%= link_to 'Show', group_assignment_path(@group, assignment) %></td>
+        <% if current_user.role == "Teacher" %>
+          <td><%= link_to 'Edit', edit_group_assignment_path(@group, assignment) %></td>
+          <td><%= link_to 'Disable', group_assignment_path(@group, assignment),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>

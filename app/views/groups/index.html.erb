@@ -12,11 +12,16 @@
 
   <% @groups.each do |group| %>
     <tr>
-      <td><%= group.name %></td>
-      <td><%= group.schedule %></td>
-      <td><%= link_to 'Show', group_path(group) %></td>
-      <% if current_user.role == "Teacher" %>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+      <% if group.active == true %>
+        <td><%= group.name %></td>
+        <td><%= group.schedule %></td>
+        <td><%= link_to 'Show', group_path(group) %></td>
+        <% if current_user.role == "Teacher" %>
+          <td><%= link_to 'Edit', edit_group_path(group) %></td>
+          <td><%= link_to 'Disable', group_path(group),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>
