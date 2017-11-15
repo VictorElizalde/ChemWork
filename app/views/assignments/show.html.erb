@@ -6,7 +6,9 @@
 </p>
 
 <h1>Reports</h1>
-
+<% if current_user.role == "Student" %>
+  <%= link_to 'New Report', new_group_assignment_report_path(@group, @assignment) %>
+<% end %>
 <br>
 
 <% if current_user.role == "Teacher" %>
