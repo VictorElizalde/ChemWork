@@ -15,7 +15,9 @@
       <td><%= group.name %></td>
       <td><%= group.schedule %></td>
       <td><%= link_to 'Show', group_path(group) %></td>
-      <td><%= link_to 'Edit', edit_group_path(group) %></td>
+      <% if current_user.role == "Teacher" %>
+        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

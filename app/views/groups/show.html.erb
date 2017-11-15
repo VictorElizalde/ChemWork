@@ -10,5 +10,7 @@
 
 <h1>Students</h1>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
+<% if current_user.role == "Teacher" %>
+  <%= link_to 'Edit', edit_group_path(@group) %> |
+<% end %>
 <%= link_to 'Back', groups_path %>
