@@ -18,18 +18,21 @@ class AssignmentsController < ApplicationController
 	end
 
 	def show
+		@group = Group.find(params[:group_id])
 		@assignment = Assignment.find(params[:id])
 	end
 
 	def edit
-  	@assignment = Assignment.find(params[:id])
+		@group = Group.find(params[:group_id])
+  	@assignment = @group.assignments.find(params[:id])
 	end
 
 	def update
-  	@assignment = Assignment.find(params[:id])
+		@group = Group.find(params[:group_id])
+  	@assignment = @group.assignments.find(params[:id])
 
 	  if @assignment.update(assignment_params)
-	    redirect_to groups_path
+	    redirect_to group_path(@group)
 	  else
 	    render 'edit'
 	  end
