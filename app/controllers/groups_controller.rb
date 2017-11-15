@@ -2,15 +2,17 @@ class GroupsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@groups = Group.all
+		@groups = current_user.groups
 	end
 
 	def new
 		@group = Group.new
+		@users = User.all-[current_user]
 	end
 
 	def create
 		@group = Group.new(group_params)
+		@group.users << current_user
 
 		if @group.save
 		    redirect_to groups_path
@@ -22,17 +24,19 @@ class GroupsController < ApplicationController
 	def show
 		@group = Group.find(params[:id])
 		@assignments = @group.assignments
-		@users = User.all
+		@users = @group.users
 	end
 
 	def edit
   	@group = Group.find(params[:id])
+		@users = User.all-[current_user]
 	end
 
 	def update
   	@group = Group.find(params[:id])
-
+		
 	  if @group.update(group_params)
+			@group.users << current_user unless @group.users.include? current_user
 	    redirect_to groups_path
 	  else
 	    render 'edit'

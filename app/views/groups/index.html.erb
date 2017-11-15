@@ -4,28 +4,36 @@
   <%= link_to 'New Group', new_group_path %>
 <% end %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Schedule</th>
-  </tr>
+<% if current_user.groups.size == 0 %>
 
-  <% @groups.each do |group| %>
+  <h3>No groups</h3>
+
+<% else %>
+
+  <table>
     <tr>
-      <% if group.active == true %>
-        <td><%= group.name %></td>
-        <td><%= group.schedule %></td>
-        <td><%= link_to 'Show', group_path(group) %></td>
-        <% if current_user.role == "Teacher" %>
-          <td><%= link_to 'Edit', edit_group_path(group) %></td>
-          <td><%= link_to 'Disable', group_path(group),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      <% end %>
+      <th>Name</th>
+      <th>Schedule</th>
     </tr>
-  <% end %>
-</table>
+
+    <% @groups.each do |group| %>
+      <tr>
+        <% if group.active == true %>
+          <td><%= group.name %></td>
+          <td><%= group.schedule %></td>
+          <td><%= link_to 'Show', group_path(group) %></td>
+          <% if current_user.role == "Teacher" %>
+            <td><%= link_to 'Edit', edit_group_path(group) %></td>
+            <td><%= link_to 'Disable', group_path(group),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
 
 <h1>Your Reports</h1>
 
