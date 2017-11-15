@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lab_phase: MyString
+  filename: MyString
+  content_type: MyString
+  file_contents: 
+  shared_with: MyText
+
+two:
+  lab_phase: MyString
+  filename: MyString
+  content_type: MyString
+  file_contents: 
+  shared_with: MyText
