@@ -9,6 +9,31 @@
 <% if current_user.role == "Student" %>
   <%= link_to 'New Report', new_group_assignment_report_path(@group, @assignment) %>
 <% end %>
+
+<% if @reports.size == 0 %>
+
+  <h3>No reports</h3>
+
+<% else %>
+
+  <table>
+    <tr>
+      <th>File Name</th>
+    </tr>
+
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.filename %></td>
+        <td><%= link_to 'Show', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
+        <td><%= link_to 'Edit', edit_group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
+        <td><%= link_to 'Disable', group_assignment_report_path(report.assignment.group, report.assignment, report),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
 <br>
 
 <% if current_user.role == "Teacher" %>

@@ -20,6 +20,7 @@ class AssignmentsController < ApplicationController
 	def show
 		@group = Group.find(params[:group_id])
 		@assignment = Assignment.find(params[:id])
+		@reports = @assignment.reports
 	end
 
 	def edit
