@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
 
 	def index
 		@groups = current_user.groups
+		@reports = current_user.reports
 	end
 
 	def new
@@ -34,7 +35,7 @@ class GroupsController < ApplicationController
 
 	def update
   	@group = Group.find(params[:id])
-		
+
 	  if @group.update(group_params)
 			@group.users << current_user unless @group.users.include? current_user
 	    redirect_to groups_path
