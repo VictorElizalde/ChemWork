@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@groups = current_user.groups
+		@groups = current_user.groups.where(active: true)
 		@reports = current_user.reports
 	end
 
@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
 
 	def show
 		@group = Group.find(params[:id])
-		@assignments = @group.assignments
+		@assignments = @group.assignments.where(active: true)
 		@users = @group.users
 	end
 
