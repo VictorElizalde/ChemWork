@@ -22,5 +22,10 @@
 
 <br>
 
+<% if current_user.email == @report.user.email %>
+  <%= link_to 'Delete', group_assignment_report_path(@report.assignment.group, @report.assignment, @report),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td> |
+<% end %>
 <%= link_to 'Download Report', group_assignment_report_download_path(@report.assignment.group, @report.assignment, @report) %> |
 <%= link_to 'Back', group_assignment_path(@report.assignment.group, @report.assignment) %>

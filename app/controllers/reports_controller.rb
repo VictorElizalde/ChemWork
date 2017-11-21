@@ -32,6 +32,14 @@ class ReportsController < ApplicationController
 	            filename: @report.filename)
 	end
 
+	def destroy
+		@assignment = Assignment.find(params[:assignment_id])
+		@report = Report.find(params[:id])
+		@report.destroy
+
+		redirect_to group_assignment_path(@assignment.group, @assignment)
+	end
+
 	private
   def report_params
     params.require(:report).permit(:lab_phase, :file, :user_id, :assignment_id, :shared_with)

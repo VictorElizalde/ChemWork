@@ -52,9 +52,6 @@
         <tr>
           <td><%= report.filename %></td>
           <td><%= link_to 'Show', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
-          <td><%= link_to 'Delete', group_assignment_report_path(report.assignment.group, report.assignment, report),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </table>
