@@ -4,6 +4,15 @@ class GroupsController < ApplicationController
 	def index
 		@groups = current_user.groups.where(active: true)
 		@reports = current_user.reports
+		reports_all = Report.all
+		@shared_reports = []
+		reports_all.each do |report|
+			report.shared_with.gsub(/\s+/, "").split(",").each do |user|
+				if current_user.email == user
+					@shared_reports << report
+				end
+			end
+		end
 	end
 
 	def new

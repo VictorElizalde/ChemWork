@@ -56,6 +56,26 @@
       <% end %>
     </table>
   <% end %>
+
   <h1>Reports Shared With You</h1>
+  <% if @shared_reports.size == 0 %>
+
+    <h3>No shared reports</h3>
+
+  <% else %>
+
+    <table>
+      <tr>
+        <th>File Name</th>
+      </tr>
+
+      <% @shared_reports.each do |report| %>
+        <tr>
+          <td><%= report.filename %></td>
+          <td><%= link_to 'Show', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 
 <% end %>
