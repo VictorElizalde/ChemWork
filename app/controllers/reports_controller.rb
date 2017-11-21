@@ -8,14 +8,24 @@ class ReportsController < ApplicationController
 	end
 
 	def create
+		@group = Group.find(params[:group_id])
+		@assignment = @group.assignments.find(params[:assignment_id])
+		@report = @assignment.reports.create(report_params)
+		@report.user_id = current_user.id
 
+		if @report.save
+				redirect_to group_assignment_path(@group, @assignment)
+		  else
+		    render 'new'
+		  end
 
 	end
 
 	def show
-	  send_data(@document.file_contents,
-	            type: @document.content_type,
-	            filename: @document.filename)
+		@report = Report.find(params[:id])
+	  send_data(@report.file_contents,
+	            type: @report.content_type,
+	            filename: @report.filename)
 	end
 
 	private
