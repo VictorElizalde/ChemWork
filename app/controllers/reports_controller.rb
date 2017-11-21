@@ -23,6 +23,10 @@ class ReportsController < ApplicationController
 
 	def show
 		@report = Report.find(params[:id])
+	end
+
+	def download
+		@report = Report.find(params[:report_id])
 	  send_data(@report.file_contents,
 	            type: @report.content_type,
 	            filename: @report.filename)

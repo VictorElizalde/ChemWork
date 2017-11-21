@@ -1,0 +1,26 @@
+<h1>Report Details</h1>
+
+<p>
+  <strong>Lab Phase:</strong>
+  <%= @report.lab_phase %>
+</p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @report.filename %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @report.user.email %>
+</p>
+
+<p>
+  <strong>Shared with:</strong>
+  <%= @report.shared_with %>
+</p>
+
+<br>
+
+<%= link_to 'Download Report', group_assignment_report_download_path(@report.assignment.group, @report.assignment, @report) %> |
+<%= link_to 'Back', group_assignment_path(@report.assignment.group, @report.assignment) %>

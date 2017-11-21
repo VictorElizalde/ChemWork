@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
 	resources :groups do
 		resources :assignments do
-			resources :reports
+			resources :reports do
+				get '/download', to: 'reports#download'
+			end
 		end
 	end
-	
+
   devise_for :users, :controllers => { registrations: 'registrations' }
 
 	root 'groups#index'

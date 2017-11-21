@@ -14,7 +14,7 @@ class AssignmentsController < ApplicationController
 				redirect_to group_path(@group)
 		  else
 		    render 'new'
-		  end
+		 end
 	end
 
 	def show

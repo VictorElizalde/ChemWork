@@ -25,10 +25,10 @@
     <% @reports.each do |report| %>
       <tr>
         <td><%= report.filename %></td>
-        <td><%= report.user.email %></td<>
+        <td><%= report.user.email %></td>
         <% if report.user.email == current_user.email %>
           <td><%= link_to 'Show', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
-          <td><%= link_to 'Edit', edit_group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
+          <!-- <td><%= link_to 'Download', group_assignment_report_download_path(report.assignment.group, report.assignment, report) %></td> -->
           <td><%= link_to 'Delete', group_assignment_report_path(report.assignment.group, report.assignment, report),
                 method: :delete,
                 data: { confirm: 'Are you sure?' } %></td>
