@@ -23,6 +23,7 @@ class ReportsController < ApplicationController
 
 	def show
 		@report = Report.find(params[:id])
+		@id_youtube = @report.url.split("=").last
 	end
 
 	def download
@@ -42,6 +43,6 @@ class ReportsController < ApplicationController
 
 	private
   def report_params
-    params.require(:report).permit(:lab_phase, :file, :user_id, :assignment_id, :shared_with)
+    params.require(:report).permit(:lab_phase, :file, :user_id, :assignment_id, :shared_with, :url)
   end
 end
