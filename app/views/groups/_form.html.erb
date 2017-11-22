@@ -2,7 +2,7 @@
   <% if @group.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@group.errors.count, "error") %> prohibieron 
+        <%= pluralize(@group.errors.count, "error") %> prohibieron
       </h2>
       <ul>
         <% @group.errors.full_messages.each do |msg| %>
@@ -16,9 +16,3 @@
   <%= f.association :users, collection: @users,  label_method: :email, label: "Students: ", value_method: :id %>
   <%= f.button :submit %>
 <% end %>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-      $('select').material_select();
-  });
-</script>

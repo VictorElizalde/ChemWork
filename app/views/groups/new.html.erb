@@ -16,9 +16,9 @@
 	      </ul>
 	    </div>
 	  <% end %>
-	  <%= f.input :name %>
-	  <%= f.input :schedule %>
-	  <%= f.association :users, collection: @users,  label_method: :email, label: "Students: ", value_method: :id %>
+	  <%= f.input :name, label: 'Nombre' %>
+	  <%= f.input :schedule, label: 'Horario' %>
+	  <%= f.association :users, collection: @users,  label_method: :email, label: "Integrantes: ", value_method: :id %>
 	  <%= f.button :submit, 'Crear Grupo' %>
 	<% end %>
 

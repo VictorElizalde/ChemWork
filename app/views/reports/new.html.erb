@@ -2,13 +2,13 @@
 	<div class = "container-forms">
 
 <div class = "center">
-<h1>New Report</h1>
+<h1>Nuevo Reporte</h1>
 </div>
 <%= simple_form_for [@group, @assignment, @report] do |f| %>
 
   <% if @report.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+      <h2><%= pluralize(@report.errors.count, "error") %> prohibieron este reporte de ser salvado:</h2>
 
       <ul>
       <% @report.errors.full_messages.each do |msg| %>
@@ -19,7 +19,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :lab_phase %><br />
+    <%= f.label :lab_phase, label: 'Fase de Laboratorio' %><br />
     <%= f.select :lab_phase, ['Pre-Lab', 'Lab', 'Pos-Lab'], prompt: 'Select Lab Phase' %>
   </div>
 
@@ -38,7 +38,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit, 'Crear Reporte' %>
+    <%= f.button :submit, 'Crear Reporte' %>
   </div>
 
 <% end %>
@@ -47,3 +47,9 @@
 <!-- <%= link_to 'Back', group_assignment_path(@group, @assignment) %> -->
 </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('select').material_select();
+  });
+</script>

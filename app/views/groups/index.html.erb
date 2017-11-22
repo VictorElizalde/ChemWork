@@ -4,7 +4,7 @@
 <div class="">
 <div class="card-panel white">
   <div class="action right" style ="margin-right: 25px;">
-    <%=link_to 'Log Out', destroy_user_session_path, :method=>'delete', class: "waves-effect waves-light btn"%>
+    <%=link_to 'Cerrar sesión', destroy_user_session_path, :method=>'delete', class: "waves-effect waves-light btn"%>
   </div>
     <h3>Tus Grupos</h3>
   <% if current_user.role == "Teacher" %>
@@ -76,7 +76,7 @@
   <% end %>
   </div>
   <div class="card-panel white">
-  <h3>Reportes Compartidos Contigo</h3>
+  <h3>Reportes Compartidos Conmigo</h3>
   <% if @shared_reports.size == 0 %>
     <br>
     <h6>No hay reportes</h6>
