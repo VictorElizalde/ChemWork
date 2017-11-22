@@ -2,8 +2,7 @@
   <% if @group.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@group.errors.count, "error") %> prohibited
-        this group from being saved:
+        <%= pluralize(@group.errors.count, "error") %> prohibieron 
       </h2>
       <ul>
         <% @group.errors.full_messages.each do |msg| %>

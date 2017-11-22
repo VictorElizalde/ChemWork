@@ -4,7 +4,7 @@
 
 
 <div class = "center">
-<h2>Log In</h2>
+<h2>Iniciar Sesión</h2>
 </div>
 <div class="container-forms">
 
@@ -16,14 +16,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label 'Contraseña' %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label 'Recuerdame' %>
     </div>
   <% end -%>
   <div style="padding-bottom: 20px;">
@@ -31,7 +31,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Log in", class: "waves-effect waves-light btn" %>
+    <%= f.submit "Iniciar Sesión", class: "waves-effect waves-light btn" %>
   </div>
 <% end %>
 </div>

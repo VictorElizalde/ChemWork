@@ -14,8 +14,8 @@
   <% end %>
 
   <% if current_user.groups.size == 0 %>
-
-    <h4>No existen grupos</h4>
+    <br>
+    <h6>No existen grupos</h6>
 
   <% else %>
 
@@ -53,8 +53,8 @@
 <div class="card-panel white">
   <h3>Tus Reportes</h3>
   <% if current_user.reports.size == 0 %>
-
-    <h4>No hay reportes</h4>
+    <br>
+    <h6>No hay reportes</h6>
 
   <% else %>
 
@@ -78,8 +78,8 @@
   <div class="card-panel white">
   <h3>Reportes Compartidos Contigo</h3>
   <% if @shared_reports.size == 0 %>
-
-    <h4>No hay reportes</h4>
+    <br>
+    <h6>No hay reportes</h6>
 
   <% else %>
     <table class="bordered striped">

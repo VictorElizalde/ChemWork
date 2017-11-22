@@ -1,7 +1,7 @@
 <div class="container">
 
 <div class = "center">
-<h2>Sign up</h2>
+<h2>Registrar cuenta</h2>
 </div>
 
 <div class="container-forms">
@@ -14,25 +14,25 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label 'Contraseña' %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label 'Confirmar contraseña' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="input-field">
-    <%= f.label :role %><br />
+    <%= f.label 'Rol' %><br />
     <%= f.select :role, ['Teacher', 'Student'], prompt: 'Select Role' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up", class: "waves-effect waves-light btn" %>
+    <%= f.submit "Registrar cuenta", class: "waves-effect waves-light btn" %>
   </div>
 <% end %>
 

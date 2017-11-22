@@ -3,7 +3,24 @@
 	<h1>New Group</h1>
 </div>
 <div class = "container-forms" >
-<%= render 'form' %>
+	<%= simple_form_for @group do |f| %>
+	  <% if @group.errors.any? %>
+	    <div id="error_explanation">
+	      <h2>
+	        <%= pluralize(@group.errors.count, "error") %> prohibieron
+	      </h2>
+	      <ul>
+	        <% @group.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	  <%= f.input :name %>
+	  <%= f.input :schedule %>
+	  <%= f.association :users, collection: @users,  label_method: :email, label: "Students: ", value_method: :id %>
+	  <%= f.button :submit, 'Crear Grupo' %>
+	<% end %>
 
 </div>
 </div>
