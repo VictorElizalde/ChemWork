@@ -1,7 +1,7 @@
 <div class="container">
 
 <div class="center">
-	<h1>Edit Group</h1>
+	<h1>Editar Groupo</h1>
 	</div>
 <div class="container-forms">
 	<%= simple_form_for @group do |f| %>
@@ -19,7 +19,7 @@
 	  <% end %>
 		<%= f.input :name, label: 'Nombre' %>
 	  <%= f.input :schedule, label: 'Horario' %>
-	  <%= f.association :users, collection: @users,  label_method: :email, label: "Integrantes: ", value_method: :id %>
+	  <%= f.association :users, collection: @users,  label_method: :email, label: "Integrantes: ", value_method: :id, placeholder: 'Elige Integrantes' %>
 	  <%= f.button :submit, 'Editar Grupo' %>
 	<% end %>
 </div>
