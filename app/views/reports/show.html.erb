@@ -1,5 +1,13 @@
-<h1>Report Details</h1>
+<div class="container">
+<div class="card-panel white">
 
+  <h3>Report Details</h3>
+  <%= link_to 'Download Report', group_assignment_report_download_path(@report.assignment.group, @report.assignment, @report), class: "waves-effect waves-light btn" %>
+  <% if current_user.email == @report.user.email %>
+    <%= link_to 'Delete', group_assignment_report_path(@report.assignment.group, @report.assignment, @report),
+          method: :delete,
+          data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn red" %></td>
+  <% end %>
 <p>
   <strong>Lab Phase:</strong>
   <%= @report.lab_phase %>
@@ -20,14 +28,13 @@
   <%= @report.shared_with %>
 </p>
 
+<div class="center">
 <iframe width="420" height="315" src="http://www.youtube.com/embed/<%= @id_youtube %>" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
 
 <br>
 
-<% if current_user.email == @report.user.email %>
-  <%= link_to 'Delete', group_assignment_report_path(@report.assignment.group, @report.assignment, @report),
-        method: :delete,
-        data: { confirm: 'Are you sure?' } %></td> |
-<% end %>
-<%= link_to 'Download Report', group_assignment_report_download_path(@report.assignment.group, @report.assignment, @report) %> |
-<%= link_to 'Back', group_assignment_path(@report.assignment.group, @report.assignment) %>
+
+<!-- <%= link_to 'Back', group_assignment_path(@report.assignment.group, @report.assignment) %> -->
+</div>

@@ -1,80 +1,105 @@
-<%=link_to 'Log Out', destroy_user_session_path, :method=>'delete' %>
-<h1>Your Groups</h1>
-<% if current_user.role == "Teacher" %>
-  <%= link_to 'New Group', new_group_path %>
-<% end %>
 
-<% if current_user.groups.size == 0 %>
+<div class="container">
 
-  <h3>No groups</h3>
+<div class="">
+<div class="card-panel white">
+  <div class="action right" style ="margin-right: 25px;">
+    <%=link_to 'Log Out', destroy_user_session_path, :method=>'delete', class: "waves-effect waves-light btn"%>
+  </div>
+    <h3>Tus Grupos</h3>
+  <% if current_user.role == "Teacher" %>
+  <div class="action">
+    <%= link_to 'Nuevo Grupo', new_group_path, class: "waves-effect waves-light btn"%>
+  </div>
+  <% end %>
 
-<% else %>
+  <% if current_user.groups.size == 0 %>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Schedule</th>
-    </tr>
+    <h4>No existen grupos</h4>
 
-    <% @groups.each do |group| %>
-      <tr>
-        <% if group.active == true %>
-          <td><%= group.name %></td>
-          <td><%= group.schedule %></td>
-          <td><%= link_to 'Show', group_path(group) %></td>
-          <% if current_user.role == "Teacher" %>
-            <td><%= link_to 'Edit', edit_group_path(group) %></td>
-            <td><%= link_to 'Disable', group_path(group),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %></td>
+  <% else %>
+
+    <table class="bordered striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Horario</th>
+        </tr>
+      </thead>
+
+      <% @groups.each do |group| %>
+      <tbody>
+        <tr>
+          <% if group.active == true %>
+            <td><%= group.name %></td>
+            <td><%= group.schedule %></td>
+            <td><%= link_to 'Ver Detalle', group_path(group) %></td>
+            <% if current_user.role == "Teacher" %>
+              <td><%= link_to 'Editar', edit_group_path(group) %></td>
+              <td><%= link_to 'Deshabilitar', group_path(group),
+                    method: :delete,
+                    data: { confirm: '¿Esta seguro?' } %></td>
+            <% end %>
           <% end %>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  </div>
 
 
 <% if current_user.role == "Student" %>
-  <h1>Your Reports</h1>
+<div class="card-panel white">
+  <h3>Tus Reportes</h3>
   <% if current_user.reports.size == 0 %>
 
-    <h3>No reports</h3>
+    <h4>No hay reportes</h4>
 
   <% else %>
 
-    <table>
-      <tr>
-        <th>File Name</th>
-      </tr>
-
-      <% @reports.each do |report| %>
+    <table class="bordered striped">
+      <thead>
         <tr>
-          <td><%= report.filename %></td>
-          <td><%= link_to 'Show', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
+          <th>Nombre del Archivo</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @reports.each do |report| %>
+          <tr>
+            <td><%= report.filename %></td>
+            <td><%= link_to 'Ver Detalle', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   <% end %>
-
-  <h1>Reports Shared With You</h1>
+  </div>
+  <div class="card-panel white">
+  <h3>Reportes Compartidos Contigo</h3>
   <% if @shared_reports.size == 0 %>
 
-    <h3>No shared reports</h3>
+    <h4>No hay reportes</h4>
 
   <% else %>
-
-    <table>
-      <tr>
-        <th>File Name</th>
-      </tr>
-
-      <% @shared_reports.each do |report| %>
+    <table class="bordered striped">
+      <thead>
         <tr>
-          <td><%= report.filename %></td>
-          <td><%= link_to 'Show', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
+          <th>Nombre del Archivo</th>
         </tr>
-      <% end %>
+      </thead>
+
+      <tbody>
+        <% @shared_reports.each do |report| %>
+          <tr>
+            <td><%= report.filename %></td>
+            <td><%= link_to 'Show', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   <% end %>
 <% end %>
+</div>
+</div>
+</div>

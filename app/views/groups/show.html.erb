@@ -1,32 +1,50 @@
-<h1>Group Details</h1>
+  <div class="action" style="margin-left: 25px;">
+    <!-- <%= link_to 'Back', groups_path, class: "waves-effect waves-light btn"%> -->
+  </div>
+<div class="container">
+<div class="card-panel white">
+
+<h3>Detalles de Grupo</h3>
+<div class="" style="margin-bottom:10px;">
+<% if current_user.role == "Teacher" %>
+  <%= link_to 'Editar Grupo', edit_group_path(@group), class: "waves-effect waves-light btn" %>
+<% end %>
+</div>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @group.name %>
 </p>
 
 <p>
-  <strong>Schedule:</strong>
+  <strong>Horario:</strong>
   <%= @group.schedule %>
 </p>
+</div>
 
-<h1>Students</h1>
+<div class="card-panel white">
+<h3>Estudiantes</h3>
 
-<table>
-  <tr>
-    <th>Email</th>
-  </tr>
-
+<table class="bordered striped">
+  <thead>
+    <tr>
+      <th>Correo Electrónico</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
     <tr>
       <td><%= user.email %></td>
     </tr>
+  </tbody>
   <% end %>
 </table>
+</div>
 
-<h1>Assignments</h1>
+<div class="card-panel white">
+<h3>Tareas</h3>
 <% if current_user.role == "Teacher" %>
-  <%= link_to 'New Assignment', new_group_assignment_path(@group) %>
+  <%= link_to 'Nueva Tarea', new_group_assignment_path(@group), class: "waves-effect waves-light btn" %>
 <% end %>
 
 <% if @assignments.size == 0 %>
@@ -35,32 +53,35 @@
 
 <% else %>
 
-  <table>
-    <tr>
-      <th>Name</th>
-    </tr>
+  <table class="bordered striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+      </tr>
+    </thead>
 
+    <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
         <% if assignment.active == true %>
           <td><%= assignment.name %></td>
-          <td><%= link_to 'Show', group_assignment_path(@group, assignment) %></td>
+          <td><%= link_to 'Ver Detalle', group_assignment_path(@group, assignment) %></td>
           <% if current_user.role == "Teacher" %>
-            <td><%= link_to 'Edit', edit_group_assignment_path(@group, assignment) %></td>
-            <td><%= link_to 'Disable', group_assignment_path(@group, assignment),
+            <td><%= link_to 'Editar', edit_group_assignment_path(@group, assignment) %></td>
+            <td><%= link_to 'Deshabilitar', group_assignment_path(@group, assignment),
                   method: :delete,
                   data: { confirm: 'Are you sure?' } %></td>
           <% end %>
         <% end %>
       </tr>
     <% end %>
+    </tbody>
   </table>
 
 <% end %>
+</div>
 
 <br>
 
-<% if current_user.role == "Teacher" %>
-  <%= link_to 'Edit Group', edit_group_path(@group) %> |
-<% end %>
-<%= link_to 'Back', groups_path %>
+
+</div>
