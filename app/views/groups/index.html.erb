@@ -93,7 +93,7 @@
         <% @shared_reports.each do |report| %>
           <tr>
             <td><%= report.filename %></td>
-            <td><%= link_to 'Show', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
+            <td><%= link_to 'Ver Detalle', group_assignment_report_path(report.assignment.group, report.assignment, report) %></td>
           </tr>
         <% end %>
       </tbody>
