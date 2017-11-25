@@ -1,30 +1,36 @@
 <div class="container">
 <div class="card-panel white">
 
-  <h3>Report Details</h3>
-  <%= link_to 'Download Report', group_assignment_report_download_path(@report.assignment.group, @report.assignment, @report), class: "waves-effect waves-light btn" %>
+  <h3>Detalles de Reporte</h3>
+  <%= link_to 'Descargar Reporte', group_assignment_report_download_path(@report.assignment.group, @report.assignment, @report), class: "waves-effect waves-light btn" %>
   <% if current_user.email == @report.user.email %>
-    <%= link_to 'Delete', group_assignment_report_path(@report.assignment.group, @report.assignment, @report),
+    <%= link_to 'Eliminar', group_assignment_report_path(@report.assignment.group, @report.assignment, @report),
           method: :delete,
           data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn red" %></td>
   <% end %>
+
 <p>
-  <strong>Lab Phase:</strong>
+  <strong>Fecha:</strong>
+  <%= @report.created_at.in_time_zone("Monterrey") %>
+</p>
+
+<p>
+  <strong>Fase Laboratorio:</strong>
   <%= @report.lab_phase %>
 </p>
 
 <p>
-  <strong>File name:</strong>
+  <strong>Nombre Archivo:</strong>
   <%= @report.filename %>
 </p>
 
 <p>
-  <strong>Student:</strong>
+  <strong>Estudiante:</strong>
   <%= @report.user.email %>
 </p>
 
 <p>
-  <strong>Shared with:</strong>
+  <strong>Compartido con:</strong>
   <%= @report.shared_with %>
 </p>
 
@@ -35,6 +41,4 @@
 
 <br>
 
-
-<!-- <%= link_to 'Back', group_assignment_path(@report.assignment.group, @report.assignment) %> -->
 </div>
