@@ -12,7 +12,9 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class="center">
-      <img class="cover" src="/assets/Logo.jpeg" alt="Logo Chemwork">
+      <%= link_to root_path do %>
+        <%= image_tag "/assets/Logo.jpeg", class: "cover" %>
+      <% end %>
     </div>
 
     <%= yield %>
